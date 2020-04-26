@@ -9,23 +9,17 @@ def printResults(data):
     # Use the json module to load the string data into a dictionary
     theJSON = json.loads(data)
 
-    # # now we can access the contents of the JSON like any other Python object
-    # if "title" in theJSON["metadata"]:
-    #     print(theJSON["metadata"]["title"])
-
-    # Get the Euro -> USD exchange rate.
-    ## count = theJSON["usd"]["rate"];
-    ## count = round(count, 3)
-    ## print("--------------")
-    ## print ("Euro to USD Exchange rate is: " + str(count))
-    ## print ("--------------")
-
-    #Get the date for Malta.
+    datakeys= theJSON.keys()
     mtdata= list(theJSON["Malta"])
-    # for troubleshooting, show what we have now
-    # print(mtdates)
-    for i in mtdata:
-    	print(f"{i}")
+    # print(mtdata)
+    
+    print("Covid stats for Malta (last for days)")
+    print(f"Date:\t\tConfirmed:\t\tDeaths:\t\tRecoveries:")
+    last_for = [-4, -3, -2, -1]
+    for i in last_for:
+    	fmt_data= mtdata[i]
+    	print(f"{fmt_data['date']}\t\t{fmt_data['confirmed']}\t\t\t\t{fmt_data['deaths']}\t\t{fmt_data['recovered']}")
+    	
 
 
 # Open the URL and read the data
