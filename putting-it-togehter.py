@@ -8,9 +8,9 @@ pizza_toppings = ["cheese", "pepperoni"]
 
 def format_topping(topping):
     if topping == "cheese":
-        return f"{topping.title()} (Free)"
+        return f"{topping.title()}\t\t(Free)"
     else:
-        return f"{topping.title()} ($1 Extra)"
+        return f"{topping.title()}\t($1 Extra)"
 
 # print(format_topping("cheese") == "Cheese (Free)")
 

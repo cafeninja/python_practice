@@ -43,7 +43,7 @@ def printResults(data):
 
     # Get the Euro -> USD exchange rate.
     count = theJSON["usd"]["rate"];
-    count = round(count, 2)
+    count = round(count, 3)
     print("--------------")
     print ("Euro to USD Exchange rate is: " + str(count))
     print ("--------------")
@@ -60,5 +60,5 @@ else:
     print("Received an error from server, cannot retrieve results " + str(webUrl.getcode()))
 
 # Show me the line graph of important stat to me.  Maybe try something from Covid-19 source.
-
+# 
 
