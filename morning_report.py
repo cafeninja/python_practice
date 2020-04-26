@@ -6,6 +6,17 @@ from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 import urllib.request  # instead of urllib2 like in Python 2.7
 import json
+import sys
+import os
+ 
+## delete only if file exists ##
+if os.path.exists("message.txt"):
+    os.remove("message.txt")
+
+# save output of whole script to file.
+orig_stdout = sys.stdout
+f = open('message.txt', 'w')
+sys.stdout = f
 
 # Tell me the day of the week.
 today = date.today()
@@ -125,7 +136,7 @@ def printResults(data):
     mtdata= list(theJSON["Malta"])
     # print(mtdata)
     
-    print("Covid stats for Malta (last for days)")
+    print("Covid stats for Malta (last four days)")
     print(f"Date:\t\tConfirmed:\t\tDeaths:\t\tRecoveries:")
     last_for = [-4, -3, -2, -1]
     for i in last_for:
@@ -144,8 +155,32 @@ if (webUrl.getcode() == 200):
 else:
     print("Received an error from server, cannot retrieve results " + str(webUrl.getcode()))
 #########################
+
+# closes the output of script to file and closes it for the message boddyl
+sys.stdout = orig_stdout
 f.close() 
 
 # Send email with the message body above:
+# reference https://realpython.com/python-send-email/#option-2-setting-up-a-local-smtp-server
+
+import smtplib, ssl
+m = open("message.txt", "r")
+body = m.read()
+
+port = 587  # For starttls
+smtp_server = "smtp.gmail.com"
+sender_email = "emmettstewart1@gmail.com"
+receiver_email = "emmett@ce3ps.com"
+password = "prnzxturkdvipwby"
+message = "Subject: Daily Report for " + str(today) + "\n\n" + str(body) + "\n\n"
+
+context = ssl.create_default_context()
+with smtplib.SMTP(smtp_server, port) as server:
+    server.ehlo()  # Can be omitted
+    server.starttls(context=context)
+    server.ehlo()  # Can be omitted
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, message)
+
 
 
