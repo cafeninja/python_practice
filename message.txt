@@ -1,17 +1,17 @@
-Today is Sunday.
-26 April, 20
+Today is Thursday.
+30 April, 20
 --------------
 You are 48 years old today.
 --------------
-Euro to USD Exchange rate is: 1.079
+Euro to USD Exchange rate is: 1.086
 --------------
 The high temprature should be 18 C.
-Currently the temp is 17 C. 
-With current humidity at 88%.
+Currently the temp is 18 C. 
+With current humidity at 77%.
 --------------
-Covid stats for Malta (last for days)
+Covid stats for Malta (last four days)
 Date:		Confirmed:		Deaths:		Recoveries:
-2020-4-22		444				3		165
-2020-4-23		445				3		204
-2020-4-24		447				3		223
-2020-4-25		448				4		249
+2020-4-26		448				4		282
+2020-4-27		450				4		286
+2020-4-28		458				4		303
+2020-4-29		463				4		339
