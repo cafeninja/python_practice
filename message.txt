@@ -1,17 +1,20 @@
 Today is Thursday.
-30 April, 20
+14 May, 20
 --------------
 You are 48 years old today.
 --------------
 Euro to USD Exchange rate is: 1.086
 --------------
-The high temprature should be 18 C.
-Currently the temp is 18 C. 
-With current humidity at 77%.
+The high temprature should be 24 C.
+Currently the temp is 24 C. 
+With current humidity at 53%.
 --------------
 Covid stats for Malta (last four days)
 Date:		Confirmed:		Deaths:		Recoveries:
-2020-4-26		448				4		282
-2020-4-27		450				4		286
-2020-4-28		458				4		303
-2020-4-29		463				4		339
+2020-5-10		496				5		433
+2020-5-11		503				5		434
+2020-5-12		506				5		434
+2020-5-13		508				6		436
+Total number of active cases: 66
+Population of Malta: 441,543
+Current population infected: 0.0149%

@@ -127,6 +127,8 @@ import json
 
 
 urlData = "https://pomber.github.io/covid19/timeseries.json"
+country = "Malta"
+country_pop = "Malta"
 
 def printResults(data):
     # Use the json module to load the string data into a dictionary
@@ -142,6 +144,27 @@ def printResults(data):
     for i in last_for:
         fmt_data= mtdata[i]
         print(f"{fmt_data['date']}\t\t{fmt_data['confirmed']}\t\t\t\t{fmt_data['deaths']}\t\t{fmt_data['recovered']}")
+    active_cases = float(mtdata[-1]['confirmed']) - (mtdata[-1]['deaths']) - (mtdata[-1]['recovered'])
+    activecases = format((mtdata[-1]['confirmed']) - (mtdata[-1]['deaths']) - (mtdata[-1]['recovered']), ',d')
+    print(f"Total number of active cases: {activecases}")
+
+    # ------   Population --------
+    with open('2020.population.country.json', 'r') as myfile:
+        popjson = myfile.read()
+    # print(popjson)
+
+    # Use the json module to load the string data into a dictionary
+    strjson = json.loads(popjson)
+    pop = 0
+    jsonlist = list(strjson['data'])
+    for i in jsonlist:
+        if i['name'] == country_pop:
+            pop = float(i['pop2020'])
+            pop = int(pop * 1000)
+            print(f"Population of {country_pop}: {format(int(pop), ',d')}")
+            print(f"Current population infected: {format((float(active_cases / pop) * 100), '.4f')}%")
+
+    # ------  End Population --------
         
 
 
