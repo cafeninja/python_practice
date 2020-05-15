@@ -3,8 +3,8 @@ import urllib.request  # instead of urllib2 like in Python 2.7
 import json
 
 urlData = "https://pomber.github.io/covid19/timeseries.json"
-country = "Georgia"
-country_pop = "Georgia"
+country = "US"
+country_pop = "United States"
 
 # county names = Malta, Italy, US, United Kingdom
 active_cases = 0
