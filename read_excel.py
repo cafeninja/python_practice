@@ -14,6 +14,7 @@
 #
 
 from openpyxl import load_workbook
+from openpyxl.utils import get_column_letter
 
 workbook = load_workbook('april.schedule.xlsx')
 first_sheet = workbook.get_sheet_names()[0]
@@ -24,6 +25,8 @@ for row in worksheet.iter_rows():
         if cell.comment:
             print('------------')
             print(row[0].value)
+            print(cell)
+            print(worksheet["B1"].value)
             # get the date number from row 2 of same column.
             # get the month from top center cell
             # get year from date utils.
