@@ -149,7 +149,7 @@ def printResults(data):
     print(f"Total number of active cases: {activecases}")
 
     # ------   Population --------
-    with open('2020.population.country.json', 'r') as myfile:
+    with open('/home/emmett/projects/python_practice/2020.population.country.json', 'r') as myfile:
         popjson = myfile.read()
     # print(popjson)
 
