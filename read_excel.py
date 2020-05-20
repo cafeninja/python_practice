@@ -12,6 +12,7 @@
 # for cell in row:
 #     print (cell)
 #
+import re
 
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
@@ -25,7 +26,10 @@ for row in worksheet.iter_rows():
         if cell.comment:
             print('------------')
             print(row[0].value)
-            print(cell)
+            colfind = re.findall('\.[A-Z]', cell)
+            #print(colfind)
+            column = re.sub('\.', '', colfind)
+            print(column)
             print(worksheet["B1"].value)
             # get the date number from row 2 of same column.
             # get the month from top center cell
