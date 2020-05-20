@@ -13,6 +13,7 @@
 #     print (cell)
 #
 import re
+from datetime import datetime
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
@@ -26,14 +27,27 @@ for row in worksheet.iter_rows():
             print('------------')
             print(row[0].value)
             cellname = str(cell)
-            col2 = re.findall("[A-Z]", cellname)
-            col1 = col2[2]
+            commentRaw = str(cell.comment.text)
+            col2 = re.findall("\.[A-Z]{1,2}", cellname)
+            print(col2)
+            #col1 = re.sub(r'\.', '', col2)
             rownum = re.findall("[0-9]{1,2}", cellname)
-            date = col1+'2'
-            print(str((worksheet[date].value))+ ' ' + str((worksheet["B1"].value)))
-            # get the date number from row 2 of same column.
-            # get the month from top center cell
-            # get year from date utils.
+            #date = col1+'2'
+            # cal = str((worksheet[date].value))+ ' ' + str((worksheet["B1"].value))
+            # print(cellname)  # for troubleshooting
+            # print(f'Column letter: {col2}')
+            # print(f'Row number: {rownum}')
+            # print(cal)
+            # ottime = commentRaw.split(' ')[0]
+            # print(f'Time: {ottime}')
+            # ottype = commentRaw.split(' ')[1]
+            # #caldate = datetime.strptime(cal, '%d %B %Y')
+            # #print(caldate)
+            # print(f'Type of OT: {ottype}')
+            # #otreason = commentRaw.split(' ')[2]
+            # #print(f'OT reason: {otreason}')
+            # commentList = list(cell.comment.text.split())
+            # print(commentList)
             print(cell.comment.text)
             # reformat these outputs to have trailing cell "|" so it looks good
             # reorder output to match over time report.
