@@ -112,8 +112,8 @@ for i in holidaylist:
     print(i)
     holidaycol = str(i+"3:"+i+"15")
     print(holidaycol)
-    for row in worksheet.iter_rows("{holidaycol}"):
-        for cell in row:
-            print(cell)
+##    for row in worksheet.iter_rows():
+##        for cell in row:
+##            if cell :
 #        if cell.value != '':
 #            print(cell(row=cell.row, column=1).value)
