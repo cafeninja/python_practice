@@ -19,8 +19,9 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
 workbook = load_workbook('april.schedule.xlsx')
-first_sheet = workbook.get_sheet_names()[0]
-worksheet = workbook.get_sheet_by_name(first_sheet)
+first_sheet = workbook.sheetnames[0]
+worksheet = workbook[first_sheet]
+#worksheet = workbook.get_sheet_by_name(first_sheet)
 
 # Team members by employee number:
 staffdict = {
@@ -38,7 +39,7 @@ staffdict = {
 "Andrea Gaffiero (anga02)": 11504
 }
 #print(staffdict)  # for troublehsooting
-
+holidaylist = []
 print('------------')
 for row in worksheet.iter_rows():
     for cell in row:
@@ -75,6 +76,7 @@ for row in worksheet.iter_rows():
             elif len(namelist) <= 1:
                 note = str(re.sub('[\n\'\[\]!@#$]', '', commentRaw))
                 fmtrow.append(note)
+                holidaylist.append(col1)
                 #print(note)
             # Add Date to list for output.
             fmtrow.append(cal)
@@ -105,3 +107,13 @@ for row in worksheet.iter_rows():
 # 123	        | Nadine	    | Dalli	| 2/8/2017	| OT15	        | 3
 
 print('------------')
+print(holidaylist)
+for i in holidaylist:
+    print(i)
+    holidaycol = str(i+"3:"+i+"15")
+    print(holidaycol)
+    for row in worksheet.iter_rows("{holidaycol}"):
+        for cell in row:
+            print(cell)
+#        if cell.value != '':
+#            print(cell(row=cell.row, column=1).value)
