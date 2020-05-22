@@ -118,7 +118,7 @@ for i in holidaylist:
     for row in worksheet.iter_rows():
         for cell in row:
             if cell.column == i:
-                if cell.value == 'D' or cell.value == 'N':
+                if cell.value == 'D' or cell.value == 'N' or cell.value == '2N' or cell.value == '2D':
                     fmtrow = []
                     name = str(row[0].value)
                     namelist = name.split(" ")
@@ -159,5 +159,60 @@ for i in holidaylist:
                     fmtrow.append('12')
                     print(fmtrow, sep=" | ")
 
-
+## Add list of persons working on feast which is not on Saturday or Sunday
+print('----Scheduled off Weekday Feast--------')
+#print(holidaylist)   # for troubleshooting
+for i in holidaylist:
+    # print(i)   # for troubleshooting
+    #holidaycol = str(i+"3:"+i+"15")
+    # print(holidaycol)
+    for row in worksheet.iter_rows():
+        for cell in row:
+            if cell.column == i:
+                if cell.value is None:
+                    fmtrow = list(range(4))
+                    name = str(row[0].value)
+                    namelist = name.split(" ")
+                    #print(row[0].value)
+                    cellname = str(cell)
+                    #commentRaw = str(cell.comment.text)
+                    col2 = str(re.findall("\.[A-Z]{1,2}", cellname))
+                    col1 = str(re.findall("[A-Z]+", col2))
+                    col1 = re.sub('[\'\[\]!@#$]', '', col1)
+                    row2 = str(re.findall("[A-Z]\d+", cellname))
+                    row1 = re.sub('[A-Z]+', '', row2)
+                    row1 = re.sub('[\'\[\]!@#$]', '', row1)
+                    rownum = re.findall("[0-9]{1,2}", cellname)
+                    date = col1+'2'
+                    cal = str((worksheet[date].value))+ ' ' + str((worksheet["B1"].value))
+                    dayweek = datetime.strptime(cal, '%d %B %Y')
+                    # print(dayweek)  # for troubleshooting
+                    if dayweek.weekday() == 6 or dayweek.weekday() == 5:
+                        del fmtrow[3]
+                        #@print(f'Weekend')
+                    elif dayweek.weekday() < 6:
+                        fmtrow[3] = 'Day Off Needed'
+                    # ==============================================
+                    # print(cellname)  # for troubleshooting
+                    #print(f'Column letter: {col1}')  # for troubleshooting
+                    #print(f'Row number: {rownum}...{row1}')  # for troubleshooting
+                    #print(f'Date cell: {date}')  # for troubleshooting            
+                    # ==============================================
+                    # GET EMPLOYEE NUMBER, FIRST NAME and LAST NAME OR PRINT HOLIDAY
+                    if len(namelist) > 1:
+                        #fmtrow.append(staffdict.get(name))
+                        # print(staffdict.get(name))
+                        fmtrow[0] = namelist[0]
+                        #print(namelist[0])
+                        fmtrow[1] = namelist[1]
+                        #print(namelist[1])
+                    elif len(namelist) <= 1:
+                        note = "Fail" # old content :: str(re.sub('[\n\'\[\]!@#$]', '', commentRaw))
+                        fmtrow.append(note)
+                        holidaylist.append(col1)
+                        #print(note)
+                    # Add Date to list for output.
+                    fmtrow[2] = cal
+                    if len(fmtrow) == 4 and len(fmtrow[0]) > 2:
+                        print(fmtrow, sep=" | ")
 ##  Make xlxs and input each row into it.
