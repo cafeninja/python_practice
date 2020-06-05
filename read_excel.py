@@ -52,7 +52,7 @@ book.save(filename)
 
 
 workbook = load_workbook('2020_Malta_NOC_Schedule.xlsx')
-first_sheet = workbook.sheetnames[1]
+first_sheet = workbook.sheetnames[4]
 worksheet = workbook[first_sheet]
 #worksheet = workbook.get_sheet_by_name(first_sheet)
 
@@ -83,6 +83,11 @@ for row in worksheet.iter_rows():
             #print(row[0].value)
             cellname = str(cell)
             commentRaw = str(cell.comment.text)
+            commentRaw = str(re.sub(r"^.*\n", '', commentRaw))
+            commentRaw = str(re.sub(r"^.*\n", '', commentRaw))
+            commentRaw = str(re.sub(r"^.*\n", '', commentRaw))
+            commentRaw = str(re.sub(r"^.*\n", '', commentRaw))
+            commentRaw = commentRaw.strip()
             col2 = str(re.findall("\.[A-Z]{1,2}", cellname))
             col1 = str(re.findall("[A-Z]+", col2))
             col1 = re.sub('[\'\[\]!@#$]', '', col1)
