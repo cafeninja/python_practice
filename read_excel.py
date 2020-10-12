@@ -52,7 +52,8 @@ book.save(filename)
 
 
 workbook = load_workbook('2020_Malta_NOC_Schedule.xlsx')
-first_sheet = workbook.sheetnames[4]
+first_sheet = workbook.sheetnames[1]
+print(f'Worksheet name: {first_sheet}')
 worksheet = workbook[first_sheet]
 #worksheet = workbook.get_sheet_by_name(first_sheet)
 
