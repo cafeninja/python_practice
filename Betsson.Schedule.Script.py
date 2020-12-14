@@ -67,7 +67,7 @@ staffdict = {
 "Godwin Urio (gour01)": 10872,
 "Jonathan Mizzi (jomi)": 2995,
 "Kenrick Bartolo (keba01)": 11248,
-"Jurgen Sammut (jusa01)": 11495,
+"Jurgen Sammut (jusa01)": 11475,
 "Jean Claude Aber (jeab02)": 11452,
 "Christopher Muscat (chmu03)": 11505,
 "Andrea Gaffiero (anga02)": 11504
